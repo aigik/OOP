@@ -1,2 +1,2 @@
-Objektorienteeritud programmeerimine
+# Objektorienteeritud programmeerimine
 KHK KD19
