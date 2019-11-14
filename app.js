@@ -15,4 +15,11 @@ sisu = document.domain;
 sisu = document.URL;
 sisu = document.characterSet;
 sisu = document.contentType;
+
+// formi andmed
+sisu = document.forms; // k6ik vormid
+sisu = document.forms[0]; // esimene vorm
+sisu = document.forms[0].id; // esimese vormi id
+sisu = document.forms[0].method; // vormi t88tlus meetod
+sisu = document.forms[0].action;
 console.log(sisu);
