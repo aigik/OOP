@@ -11,4 +11,9 @@ klass = document.getElementById('title').className;
  sisu.style.color = '#fff';
  sisu.style.padding = '5px';
 // sisu.style.display = 'none';
+
+// sisu muutmine
+sisu.textContent = 'Minu ylesanded';
+sisu.innerText = 'Just minu ylesanded';
+sisu.innerHTML = '<span style="color:lightgreen">Vabad ylesanded</span>';
 console.log(sisu);
