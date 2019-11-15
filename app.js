@@ -11,3 +11,6 @@ document.querySelector('ul li').style.color = 'blue';
 document.querySelector('li:last-child').style.color = 'red';
 document.querySelector('li:nth-child(2)').style.color = 'orange';
 console.log(sisu);
+
+
+// test
