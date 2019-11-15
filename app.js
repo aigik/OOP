@@ -1,16 +1,38 @@
 // document meetodid
-// single element selectors
-
-sisu = document.querySelector('#title'); // id j2rgi (get the first element with id title)
-sisu = document.querySelector('.card-title'); // klassi nime j2rgi (get the first element with class card-title)
-sisu = document.querySelector('h5'); // elemendi j2rgi
-
-// stiili muutmine
-document.querySelector('li').style.color = 'red';
-document.querySelector('ul li').style.color = 'blue';
-document.querySelector('li:last-child').style.color = 'red';
-document.querySelector('li:nth-child(2)').style.color = 'orange';
+// multiply elements selectors
+let sisu = document.getElementsByClassName('collection-item');
 console.log(sisu);
+console.log(sisu[2]);
+sisu[0].style.color = 'orange';
+sisu[2].textContent = 'Õpi arvutivõrgud';
 
+// querySelector + klassi nime järgi
+let nimekirjaElemendid = document.querySelector('ul').getElementsByClassName('collection-item');
 
-// test
+// elemendi nime järgi
+nimekirjaElemendid = document.getElementsByTagName('li');
+
+// teisendame HTMLCollection massiiviks (array)
+nimekirjaElemendid = Array.from(nimekirjaElemendid);
+// massiivi meetodite kasutamine
+nimekirjaElemendid.reverse();
+
+// massiivi läbimine tsükliga
+// for
+for(let i = 0; i < nimekirjaElemendid.length; i++){
+    nimekirjaElemendid[i].style.background = '#ddd';
+    nimekirjaElemendid[1].style.background = '#f4f4f4';
+//console.log(nimekirjaElemendid[i].className);
+}
+
+// forEach
+//nimekirjaElemendid.forEach(function(element){
+  //  console.log(element);
+    //element.style.background = '#ddd';
+//});
+
+let nimekiriPaaritu = document.querySelectorAll('li:nth-child(odd)');
+console.log(nimekiriPaaritu);
+
+let nimekiriPaaris = document.querySelectorAll('li:nth-child(even)');
+console.log(nimekiriPaaris);
