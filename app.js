@@ -1,22 +1,15 @@
 // document meetodid
-// elementide asendamine
+// elementide kustutamine
 
-// leia vana element h5
-const vanaPealkiri = document.querySelector('h5');
-// leia kaart, kus antud pealkiri on
-const divCardAction = document.querySelector('.card-action');
-// const pealkirjaDiv = document.querySelector('div.card-action');
+// leia antud DOM-ist kõik li elemendid
+const liElemendid = document.querySelectorAll('li');
+// kustuta konkreetne element
+liElemendid[2].remove();
 
-// loo uus pealkiri
-const uusPealkiri = document.createElement('h3');
-// lisa id
-uusPealkiri.id = 'new-title';
-// lisa sisu
-uusPealkiri.textContent = 'Uued ülesanded';
-// uusPealkiri.appendChild(document.createTextNode('Uued ülesanded'));
+// leia antud DOM-is ul element
+const ulElement = document.querySelector('ul.collection');
+// kustuta antud elemendist li
+// li on ul child elemendid
+ulElement.removeChild(liElemendid[1]);
 
-//asenda vana pealkiri uuega
- divCardAction.replaceChild(uusPealkiri, vanaPealkiri);
-
-
-console.log(uusPealkiri);
+console.log(ulElement);
