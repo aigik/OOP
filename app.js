@@ -1,27 +1,41 @@
-// sündmused
+// storage
 
-// bubbling
+// salvestame väärtus
+  localStorage.setItem('eesnimi', 'Aigi');
+  localStorage.setItem('perenimi', 'Kallaste');
 
-// lehe kaardi pealkiri
-/* document.querySelector('.card-title').addEventListener('click', function(e){
-    console.log('card-content');
-})*/
+ // väärtuse eemaldamine
+ // localStorage.removeItem('nimi');
 
-// lehe kaardi sisu
-document.querySelector('.card-content').addEventListener('click', function(e){
-    console.log('card-content');
-});
+ //väärtuse lugemine
+ // const eesnimi = localStorage.getItem('eesnimi');
+ // console.log(eesnimi);
+ // const perenimi = localStorage.getItem('perenimi');
+ // console.log(perenimi);
 
-// delegeerimine
+ // eemalda kõik väärtused
+ // localStorage.clear();
 
-const kustutaYlesanne = document.querySelector('.delete-item');
-kustutaYlesanne.addEventListener('click', kustuta);
+ document.querySelector('form').addEventListener('submit', salvesta);
 
-//console.log(kustutaYlesanne);
+ function salvesta(e){
+     const uusYlesanne = document.getElementById('task').value;
+     let ylesanded;
+     if(localStorage.getItem('tasks') === null){
+         ylesanded = []; // tekitame massiivi, kui veel ülesandeid pole
+     } else {
+         ylesanded = JSON.parse(localStorage.getItem('tasks'));
+         // loeme LS andmed, teisendame JSON elemendiks - JS struktuuriks
+     }
+     console.log(ylesanded);
+     ylesanded.push(uusYlesanne);
+     console.log('ulesanne lisatud');
+     localStorage.setItem('tasks', JSON.stringify(ylesanded)); // lisame andmed LS sisse
+     e.preventDefault();
+ }
 
-function kustuta(e){
-    if(e.target.parentElement.classList.contains('delete-item')){
-        console.log('hakkama kustutama');
-        e.target.parentElement.parentElement.remove();
-    }
-}
+ // loeme sisetatud ülesanded
+ const ylesanded = JSON.parse(localStorage.getItem('tasks'));
+ ylesanded.forEach(ylesanne => {
+     console.log(ylesanne);
+ });
