@@ -7,8 +7,23 @@ const text = document.querySelector('h5');
 // kustutame lisaUusYlesanne väärtus
 lisaUusYlesanne.value = '';
 
-// vormi saatmine
-form.addEventListener('submit', syndmus);
+// klaviatuur
+// keydown
+// lisaUusYlesanne.addEventListener('keydown', syndmus);
+// keyup
+// lisaUusYlesanne.addEventListener('keyup', syndmus);
+// keypress
+// lisaUusYlesanne.addEventListener('keypress', syndmus);
+// focus
+// lisaUusYlesanne.addEventListener('focus', syndmus);
+// blur
+// lisaUusYlesanne.addEventListener('blur', syndmus);
+// paste
+// lisaUusYlesanne.addEventListener('paste', syndmus);
+// cut
+// lisaUusYlesanne.addEventListener('cut', syndmus);
+// input
+// lisaUusYlesanne.addEventListener('input', syndmus);
 
 function syndmus(e){
     // logi sündmuse tüüp
