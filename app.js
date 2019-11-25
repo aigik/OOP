@@ -1,41 +1,32 @@
-// storage
+// inimene kirjeldus
+let eesNimi, pereNimi;
+let vanus;
 
-// salvestame väärtus
-  localStorage.setItem('eesnimi', 'Aigi');
-  localStorage.setItem('perenimi', 'Kallaste');
+function taisNimi(eesNimi, pereNimi){
+return `${eesNimi} ${pereNimi}`;
+}
 
- // väärtuse eemaldamine
- // localStorage.removeItem('nimi');
+function arvutaVanus(synnikuupaev){
+    synnikuupaev = new Date(synnikuupaev);
+    vaheSekundites = Date.now() - synnikuupaev.getTime();
+    vanusDate = new Date(vaheSekundites);
+    aastaDate = vanusDate.getUTCFullYear();
+    vanus = aastaDate - 1970;
+    return `vanus: ${vanus}`;
+}
 
- //väärtuse lugemine
- // const eesnimi = localStorage.getItem('eesnimi');
- // console.log(eesnimi);
- // const perenimi = localStorage.getItem('perenimi');
- // console.log(perenimi);
+console.log(taisNimi("Opetaja", "Laps"));
+console.log(arvutaVanus("2014-08-01"));
 
- // eemalda kõik väärtused
- // localStorage.clear();
 
- document.querySelector('form').addEventListener('submit', salvesta);
-
- function salvesta(e){
-     const uusYlesanne = document.getElementById('task').value;
-     let ylesanded;
-     if(localStorage.getItem('tasks') === null){
-         ylesanded = []; // tekitame massiivi, kui veel ülesandeid pole
-     } else {
-         ylesanded = JSON.parse(localStorage.getItem('tasks'));
-         // loeme LS andmed, teisendame JSON elemendiks - JS struktuuriks
-     }
-     console.log(ylesanded);
-     ylesanded.push(uusYlesanne);
-     console.log('ulesanne lisatud');
-     localStorage.setItem('tasks', JSON.stringify(ylesanded)); // lisame andmed LS sisse
-     e.preventDefault();
- }
-
- // loeme sisetatud ülesanded
- const ylesanded = JSON.parse(localStorage.getItem('tasks'));
- ylesanded.forEach(ylesanne => {
-     console.log(ylesanne);
- });
+/* ei tööta
+function vanus(kuupaev) {
+    var today = new Date();
+    var sunnikuuPaev = new Date(kuupaev);
+    var vanus = today.getFullYear() - sunnikuuPaev.getMonth();
+    var kuu = today.getMonth() - sunnikuuPaev.getMonth();
+    if (kuu < 0 || (kuu === 0 && today.GetDate() < sunnikuuPaev())) {
+        vanus--;
+    }
+    return vanus;
+}*/
