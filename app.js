@@ -1,32 +1,20 @@
-// inimene kirjeldus
-let eesNimi, pereNimi;
-let vanus;
+// inimene kirjeldus OOP abil
+// inimese konstruktor (skp=synnikuupäev)
+function Isik(n, skp){
+    this.nimi = n;
+    this.synnikuupaev = new Date(skp);
 
-function taisNimi(eesNimi, pereNimi){
-return `${eesNimi} ${pereNimi}`;
-}
-
-function arvutaVanus(synnikuupaev){
-    synnikuupaev = new Date(synnikuupaev);
-    vaheSekundites = Date.now() - synnikuupaev.getTime();
-    vanusDate = new Date(vaheSekundites);
-    aastaDate = vanusDate.getUTCFullYear();
-    vanus = aastaDate - 1970;
-    return `vanus: ${vanus}`;
-}
-
-console.log(taisNimi("Opetaja", "Laps"));
-console.log(arvutaVanus("2014-08-01"));
-
-
-/* ei tööta
-function vanus(kuupaev) {
-    var today = new Date();
-    var sunnikuuPaev = new Date(kuupaev);
-    var vanus = today.getFullYear() - sunnikuuPaev.getMonth();
-    var kuu = today.getMonth() - sunnikuuPaev.getMonth();
-    if (kuu < 0 || (kuu === 0 && today.GetDate() < sunnikuuPaev())) {
-        vanus--;
+    // arvuta vanus
+    this.arvutaVanus = function(){
+        const vaheSekundites = Date.now() - this.synnikuupaev.getTime();
+        const vanusDateKujul = new Date(vaheSekundites);
+        const taisAasta = vanusDateKujul.getUTCFullYear();
+        const vanus = taisAasta - 1970;
+        return vanus;
     }
-    return vanus;
-}*/
+}
+
+const aigi = new Isik('Aigi', '1983-08-13');
+const kadi = new Isik('Kadi', '1989-12-23');
+console.log(aigi.arvutaVanus());
+console.log(kadi.arvutaVanus());
