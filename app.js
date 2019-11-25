@@ -1,8 +1,14 @@
 // inimene kirjeldus OOP abil
 // inimese konstruktor (skp=synnikuupäev)
-function Isik(n, skp){
-    this.nimi = n;
+function Isik(e, p, skp){
+    this.eesnimi = e;
+    this.perenimi = p;
     this.synnikuupaev = new Date(skp);
+
+    // väljasta täisnimi
+    this.taisNimi = function(){
+        return `${this.eesnimi} ${this.perenimi}`;
+    }
 
     // arvuta vanus
     this.arvutaVanus = function(){
@@ -14,7 +20,7 @@ function Isik(n, skp){
     }
 }
 
-const aigi = new Isik('Aigi', '1983-08-13');
-const kadi = new Isik('Kadi', '1989-12-23');
+const aigi = new Isik('Aigi', 'Kallaste', '1983-08-13');
+const kadi = new Isik('Kadi', 'Tamm', '1989-12-23');
 console.log(aigi.arvutaVanus());
 console.log(kadi.arvutaVanus());
