@@ -66,18 +66,27 @@ KL.prototype.teade = function(s, stiil){
     
 }
 
+// raamatute lugemine LS-st
+KL.prototype.loeRaamatud = function(){
+ // loome raamatute hoidla LS-is
+ let raamatud;
+ // kui raamatud veel LS-s ei eksisteeri
+ if(localStorage.getItem('raamatud') === null){
+     raamatud = [];
+ } else {
+     // kui raamatud juba olemas, saame need kätte
+     raamatud = JSON.parse(localStorage.getItem('raamatud'));
+ }
+ return raamatud;
+}
+
 // raamatu salvestamine local storage -sse
 KL.prototype.salvestaRaamat = function(r){
-    // loome raamatute hoidla LS-is
-    let raamatud;
-    // kui raamatud veel LS-s ei eksisteeri
-    if(localStorage.getItem('raamatud') === null){
-        raamatud = [];
-    } else {
-        // kui raamat juba olemas, saame need kätte
-        raamatud = JSON.parse(localStorage.getItem('raamatud'));
-    }
+    // tekitame raamatute massiiv
+    raamatud = this.loeRaamatud();
+    // lükkame uue raamatu andmed massiivi
     raamatud.push(r);
+    // lisame andmed LS-sse
     localStorage.setItem('raamatud', JSON.stringify(raamatud));
     console.log(raamatud);
 }
@@ -104,7 +113,7 @@ const raamat = new Raamat(pealkiri, autor, isbn);
     } else {
         // muidu
         // lisame sisestatud raamat tabelisse
-        // kl.lisaRaamatTabelisse(raamat);
+        kl.lisaRaamatTabelisse(raamat);
 
         // salvestame raamatu andmed LS-sse
         kl.salvestaRaamat(raamat);
