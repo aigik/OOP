@@ -21,6 +21,7 @@ KL.prototype.puhastaSisend = function(){
 
 // raamatu lisamine tabelisse
 KL.prototype.lisaRaamatTabelisse = function(r){
+    console.log(r);
     // loome tabeli rida
     const rida = document.createElement('tr');
     // täidame rida tabeli andmetega
@@ -83,12 +84,37 @@ KL.prototype.loeRaamatud = function(){
 // raamatu salvestamine local storage -sse
 KL.prototype.salvestaRaamat = function(r){
     // tekitame raamatute massiiv
-    raamatud = this.loeRaamatud();
+    const raamatud = this.loeRaamatud();
     // lükkame uue raamatu andmed massiivi
     raamatud.push(r);
     // lisame andmed LS-sse
     localStorage.setItem('raamatud', JSON.stringify(raamatud));
-    console.log(raamatud);
+    // console.log(raamatud);
+}
+
+// salvestatud raamatute näitamine
+KL.prototype.naitaRaamatud = function(){
+    // vaatame, millised raamatud on olemas
+    const raamatud = this.loeRaamatud();
+    raamatud.forEach(function(raamat){
+        // loeme andmed LS-st ühekaupa ja teisendame Raamat objektiks
+        const r = new Raamat(raamat['autor'], raamat['pealkiri'], raamat['isbn']);
+        // loome KL objekt väljastamiseks
+        const kl = new KL();
+        // väljastame tabeli rida
+        kl.lisaRaamatTabelisse(r);
+    });
+}
+
+// kirjeldame andmete lugemise sündmust LS-st
+document.addEventListener('DOMContentLoaded', raamatuteTabel);
+
+// raamatute tabeli funktsioon
+function raamatuteTabel(e){
+    // loome kasutajaliidese objekt temaga opereerimiseks
+    const kl = new KL();
+    // kutsume raamatute näitamist funktsiooni
+    kl.naitaRaamatud();
 }
 
 // kirjeldame raamatu lisamise sündmust
@@ -113,6 +139,7 @@ const raamat = new Raamat(pealkiri, autor, isbn);
     } else {
         // muidu
         // lisame sisestatud raamat tabelisse
+        console.log(raamat);
         kl.lisaRaamatTabelisse(raamat);
 
         // salvestame raamatu andmed LS-sse
@@ -122,7 +149,7 @@ const raamat = new Raamat(pealkiri, autor, isbn);
     }
 
     // lisame sisestatud raamat tabelisse
-    kl.lisaRaamatTabelisse(raamat);
+    //kl.lisaRaamatTabelisse(raamat);
 
     // puhastame väljad sisestatud andmetest
     kl.puhastaSisend();
