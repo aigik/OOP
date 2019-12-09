@@ -1,9 +1,21 @@
+// app_oop.js
 
+// kirjeldame andmete lugemise sündmust LS-st
+document.addEventListener('DOMContentLoaded', raamatuteTabel);
+
+// raamatute tabeli funktsioon
+function raamatuteTabel(e){
+  // loome kasutaja liidese objekt temaga opereerimiseks
+  const kl = new KL();
+  // kutsume raamatute näitamist funktsiooni
+  kl.naitaRaamatud();
+}
 
 // kirjeldame raamatu lisamise sündmust
 document.getElementById('book-form') .addEventListener('submit', lisaRaamat);
 // raamatu lisamise funktsioon
 function lisaRaamat(e){
+    // võtame andmed vormist
     const pealkiri = document.getElementById('title').value;
     const autor = document.getElementById('author').value;
     const isbn = document.getElementById('isbn').value;
@@ -22,16 +34,14 @@ if(pealkiri == '' | autor == '' | isbn == ''){
     kl.lisaRaamatTabelisse(raamat);
 
     // loome LS objekt funktsionaali kutsumiseks
-    //const ls = new LS();
+    const ls = new LS();
 
     // salvestame raamatu andmed LS-sse
-    // ls.salvestaRaamat(raamat);
+     ls.salvestaRaamat(raamat);
     // anname teada lisamisest
      kl.teade('Raamat on lisatud!', 'valid');
-
     // puhastame väljad sisestatud andmetest
     kl.puhastaSisend();
-
 }
 
 e.preventDefault();
@@ -50,20 +60,20 @@ function kustutaRaamat(e){
     // loome X link, millel clickime kustutamiseks
     const X = e.target;
     // saame kustutava raamatu isbn kätte
-    isbn = X.parentElement.previousElementSiblin.textContent;
+    isbn = X.parentElement.previousElementSibling.textContent;
     // kustutame andmed tabeli väljundist
     kl.kustutaRaamatTabelist(X);
 
     // loome LS objekt funktsionaali kutsumiseks
-    // const ls = new LS();
+     const ls = new LS();
 
     // kustutame andmed LS-st
-    // onKustutatud = ls.kustutaRaamatLS(isbn);
+     onKustutatud = ls.kustutaRaamatLS(isbn);
 
     // väljastame vastav teade
-    // if(onKustutatud){
+     if(onKustutatud){
         kl.teade('Raamat on kustutatud!', 'valid');
-    //}
+    }
     
     e.preventDefault();
 }

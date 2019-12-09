@@ -52,4 +52,21 @@ class KL {
             return true;
         }
     }
+
+    naitaRaamatud(){
+        // loome LS objekt funktsionaali kutsumiseks
+        const ls = new LS();
+        // vaatame, millised raamatud on olemas
+        const raamatud = ls.loeRaamatud();
+        raamatud.forEach(function(raamat){
+          // loeme andmed LS-st ühekaupa
+          // ja teisendame Raamat objektiks
+          const r = new Raamat(raamat['autor'], raamat['pealkiri'], raamat['isbn']);
+          // Loome kl objekt väljastamiseks
+          const kl = new KL();
+          // väljastame tabeli rida
+          kl.lisaRaamatTabelisse(r);
+        });
+      }
 }
+
