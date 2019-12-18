@@ -1,0 +1,17 @@
+[
+    {   
+        "opetaja" : "Helve Kooser", 
+        "aine" : "IT-korraldus" 
+    },
+
+    {  
+        "opetaja" : "Anna Karutina",
+        "aine" : "Objektorienteeritud programmeerimine"
+    },
+
+    {
+        "opetaja" : "Anna Karutina",
+        "aine" : "Objektorienteeritud programmeerimine"
+    }
+
+]
