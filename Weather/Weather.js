@@ -6,7 +6,7 @@ class Weather{
     }
 
     // data from API
-    sync weatherData(){
+    async weatherData(){
         const resp = await fetch('https://api.openweathermap.org/data/2.5/weather?q=' + this.city + '&appid=' + this.key);
         const data = await resp.json();
         console.log(data);
